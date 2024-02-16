@@ -1,36 +1,61 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Node.js
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-.yarn/install-state.gz
+# Next.js build
+.next/
 
-# testing
-/coverage
+# Visual Studio Code
+.vscode/
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
+# macOS
 .DS_Store
-*.pem
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Windows
+Thumbs.db
 
-# local env files
-.env*.local
+# Environment variables
+.env
 
-# vercel
-.vercel
+# Log files
+*.log
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Dependency directories
+pnpm-lock.yaml
+yarn-error.log
+
+# Compiled output
+out/
+build/
+dist/
+
+# Editor-specific files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+
+# Package files
+*.jar
+*.war
+*.ear
+*.db
+*.sqlite
+*.sqlitedb
+*.hprof
+*.pyc
+*.pyo
+*.pyd
+*.dll
+*.exe
+*.log
+*.iws
+*.iml
+*.ipr
+*.iws
+.idea/
+.gradle/
+.DS_Store
+.venv/
+__pycache__/
+.db.sqlite3

@@ -1,0 +1,89 @@
+.mainContainer {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  height: 100vh;
+  position: fixed;
+  width: 31%;
+}
+.contentDiv {
+  margin-top: 13.2px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.xLogo {
+  width: 30px;
+}
+.contentDiv button {
+  background-color: black;
+  border: none;
+  border-radius: 0px 18px 18px 0px;
+  padding: 10px 20px 10px 0px;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+}
+#boldHome {
+  font-weight: 950;
+}
+.contentDiv button svg {
+  font-size: 1.9rem;
+  margin-right: 17px;
+}
+.contentDiv button:hover {
+  background-color: rgb(22, 24, 28);
+  cursor: pointer;
+}
+.btnPost {
+  padding: 13px 90px 13px 90px !important;
+  background-color: rgb(29, 155, 240) !important;
+  border-radius: 30px !important;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.fixedBottomElement {
+  margin-top: auto;
+  margin-bottom: 40px;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+}
+.fixedBottomElement:hover {
+  background-color: rgb(22, 24, 28);
+  cursor: pointer;
+}
+.boldText {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.grayText {
+  color: gray;
+}
+.dp {
+  width: 45px;
+  border-radius: 22.5px;
+}
+.moveRight {
+  margin-left: auto;
+  margin-right: 8px;
+}
+.logoutOption {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  width: fit-content;
+  padding: 20px !important;
+  border-radius: 40px !important;
+  background-color: black !important;
+  border: 3px solid rgb(36, 38, 43) !important;
+  font-size: 0.9rem !important;
+}

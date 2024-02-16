@@ -1,0 +1,98 @@
+/* Posts */
+.postCard {
+  width: 100%;
+  padding: 15px 20px;
+  border-bottom: 1px solid var(--border-color);
+  display: grid;
+  grid-template-columns: 10% 90%;
+}
+.dp {
+  width: 44px;
+  border-radius: 22px;
+}
+.postContentDiv {
+  display: flex;
+  flex-direction: column;
+  padding-top: 3px;
+}
+.postContentDiv {
+  color: gray;
+}
+.postContentDiv a {
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.postInfoDiv a,
+.postInfoDiv p {
+  display: inline-block;
+  color: white;
+}
+.postInfoDiv a {
+  font-weight: bold;
+  margin-right: 7px;
+}
+.postInfoDiv a:hover {
+  text-decoration: underline;
+}
+.postInfoDiv p {
+  font-weight: normal;
+  color: gray;
+  margin-right: 0px;
+}
+.postStyle {
+  color: white;
+  font-size: 1rem;
+}
+.hashtag {
+  color: var(--primary-color);
+}
+.hashtag:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.postElementDiv {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  color: gray;
+}
+.postElementDiv > *:hover {
+  cursor: pointer;
+}
+.postElementDiv > *:nth-child(1):hover {
+  color: var(--primary-color);
+}
+.postElementDiv > *:nth-child(2) {
+  font-size: 1.4rem;
+}
+.postElementDiv > *:nth-child(2):hover {
+  color: rgb(54, 180, 54);
+}
+.postElementDiv > *:nth-child(3):hover {
+  color: palevioletred;
+  font-weight: 600;
+}
+.postElementDiv > *:nth-child(4) {
+  font-size: 1.3rem;
+}
+.postElementDiv > *:nth-child(4):hover {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.postElementDiv > *:nth-child(5):hover {
+  color: var(--primary-color);
+  font-weight: bold;
+}
+.elapsedTImeStyle {
+  font-size: 1rem;
+}
+.postImage {
+  margin-top: 10px;
+  width: 100%;
+  border-radius: 15px;
+}
+.postImage:hover {
+  cursor: pointer;
+}

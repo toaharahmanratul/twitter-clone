@@ -1,0 +1,33 @@
+.regParentDiv {
+  margin-top: 13%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.regParentDiv form {
+  width: 25%;
+  display: grid;
+}
+.regParentDiv form input {
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+  height: 40px;
+  margin-bottom: 15px;
+  padding-left: 10px;
+}
+.regParentDiv form button {
+  width: 50%;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  justify-self: center;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  color: white;
+  background-color: var(--primary-color);
+  height: 30px;
+  border: none;
+  font-size: 1.1rem;
+}

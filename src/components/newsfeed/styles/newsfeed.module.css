@@ -1,0 +1,110 @@
+.mainContainer {
+  margin-left: 31%;
+  display: grid;
+  grid-template-columns: 47% auto;
+}
+.newsfeedDiv {
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.topDiv {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 50%;
+  color: aliceblue;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.9rem;
+}
+.topDiv > * {
+  padding: 16px;
+  color: aliceblue !important;
+  text-align: center;
+}
+.topDiv > *:hover {
+  background-color: rgb(22, 24, 28);
+  cursor: pointer;
+}
+.grayText {
+  color: gray !important;
+}
+.followingText {
+  border-bottom: var(--primary-color) 3px solid;
+  width: 40%;
+  margin: 0 auto;
+}
+/* Create Post Div  */
+.createPostDiv {
+  padding: 15px 20px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  border-bottom: 1px solid var(--border-color);
+}
+.dp {
+  width: 44px;
+  border-radius: 22px;
+}
+.postForm {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+.postForm input {
+  background-color: black;
+  border: none;
+  color: aliceblue;
+  font-size: 1.4rem;
+  width: 100%;
+  outline: none;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.postPrivacyDiv {
+  display: flex;
+  color: var(--primary-color);
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.mediaElementDiv {
+  display: flex;
+  justify-content: space-between;
+}
+.elementsDiv {
+  display: flex;
+  gap: 8px;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+.elementsDiv:hover {
+  cursor: pointer;
+}
+.elementsDiv label:hover {
+  cursor: pointer;
+}
+.btnPostsPost {
+  background-color: var(--primary-color);
+  border: none;
+  padding: 8px 16px 6px 16px;
+  border-radius: 15px;
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+}
+.btnPostsPost:hover {
+  cursor: pointer;
+}
+.btnPostsPost:disabled {
+  background-color: rgb(15, 78, 120);
+  color: rgb(128, 128, 128);
+}
+.uploadedImage {
+  width: 90%;
+}

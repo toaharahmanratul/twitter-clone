@@ -1,0 +1,141 @@
+.mainContainer {
+  display: grid;
+  grid-template-columns: 57% 43%;
+}
+.contentDiv {
+  margin: 5px 23px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.searchDiv {
+  background-color: rgb(32, 35, 39);
+  display: flex;
+  color: gray;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 1.5rem;
+  border: 1px black solid;
+}
+.searchDiv input {
+  background-color: rgb(32, 35, 39);
+  border: none;
+  color: aliceblue;
+  margin-left: 15px;
+  font-size: 0.9rem;
+  width: 100%;
+  outline: none;
+}
+.searchDiv.focused {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  background-color: black;
+}
+
+.searchDiv.focused input {
+  background-color: black;
+}
+.subscribeDiv {
+  background-color: rgb(22, 24, 28);
+  border-radius: 15px;
+  padding: 10px 20px;
+}
+.subscribeDiv h3 {
+  font-size: 1.3rem;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.subscribeDiv p {
+  margin-bottom: 10px;
+}
+.subscribeDiv button {
+  color: white;
+  background-color: var(--primary-color);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+}
+.trendsDiv {
+  background-color: rgb(22, 24, 28);
+  border-radius: 15px;
+  padding: 10px 0px;
+}
+.trendsDiv h3 {
+  font-size: 1.3rem;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+.trendCard {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.trendCard:hover {
+  background-color: rgb(32, 35, 39);
+  cursor: pointer;
+}
+.trendCard p {
+  color: rgb(105, 109, 114);
+}
+.whoToFollowDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: rgb(22, 24, 28);
+  border-radius: 15px;
+  padding: 10px 0px;
+}
+.whoToFollowDiv h3 {
+  font-size: 1.3rem;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-weight: bold;
+}
+.followCard {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px 20px;
+}
+.followCard h4 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.followCard:hover {
+  background-color: rgb(32, 35, 39);
+  cursor: pointer;
+}
+.dp {
+  width: 45px;
+  border-radius: 22.5px;
+}
+.btnFollow {
+  margin-left: auto;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  justify-self: flex-end;
+}
+.verified {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+}
+.footerDiv {
+  color: rgb(105, 109, 114);
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
