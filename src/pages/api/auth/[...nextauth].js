@@ -46,6 +46,7 @@ export const authOptions = {
           session.user = {
             ...session.user,
             _id: dbUser._id.toString(),
+            dpURL: dbUser.dpURL,
             username: dbUser.username,
           };
         }

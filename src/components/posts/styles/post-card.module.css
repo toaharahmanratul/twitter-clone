@@ -1,10 +1,14 @@
 /* Posts */
 .postCard {
   width: 100%;
-  padding: 15px 20px;
+  padding: 15px 20px 15px 20px;
   border-bottom: 1px solid var(--border-color);
   display: grid;
   grid-template-columns: 10% 90%;
+  position: relative;
+}
+.dpDiv {
+  margin-top: 0px;
 }
 .dp {
   width: 44px;
@@ -14,13 +18,16 @@
   display: flex;
   flex-direction: column;
   padding-top: 3px;
-}
-.postContentDiv {
   color: gray;
 }
 .postContentDiv a {
   margin-bottom: 8px;
   display: inline-block;
+}
+.postInfoDiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
 }
 .postInfoDiv a,
 .postInfoDiv p {
@@ -38,6 +45,48 @@
   font-weight: normal;
   color: gray;
   margin-right: 0px;
+}
+.postOptionsDiv {
+  left: 35rem;
+  position: absolute;
+}
+.postOptions {
+  color: gray;
+  padding: 15px 15px 10px 15px;
+  border-radius: 50%;
+  font-size: 1.1rem;
+}
+.postOptions:hover {
+  cursor: pointer;
+  background-color: rgb(22, 24, 28);
+  color: var(--primary-color);
+}
+
+/* DropDown */
+.dropdown {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  width: 350%;
+  right: 0;
+  background-color: rgb(22, 24, 28);
+  border: 1px solid rgba(109, 132, 169, 0.274);
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0px 0px 10px rgba(182, 200, 229, 0.222);
+}
+.dropdown .deletePost {
+  color: rgb(244, 33, 46);
+  display: flex;
+  gap: 10px;
+}
+.dropdown p {
+  cursor: pointer;
+  padding: 5px;
+  color: white;
+  font-weight: bold;
 }
 .postStyle {
   color: white;
@@ -71,7 +120,7 @@
   color: rgb(54, 180, 54);
 }
 .postElementDiv > *:nth-child(3):hover {
-  color: palevioletred;
+  color: rgb(249, 24, 128);
   font-weight: 600;
 }
 .postElementDiv > *:nth-child(4) {
@@ -95,4 +144,14 @@
 }
 .postImage:hover {
   cursor: pointer;
+}
+.likesDiv {
+  display: flex;
+  gap: 3px;
+}
+.likesDiv p {
+  font-size: 1rem;
+}
+.likedColor {
+  color: rgb(249, 24, 128);
 }

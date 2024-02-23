@@ -36,7 +36,6 @@ const handler = async (req, res) => {
     if (!imageURL) {
       imageURL = "/uploadedimages/" + imagePath.files.myImage[0].newFilename;
     }
-    console.log("In image API TRY BLOCK, imageURL: ", imageURL);
     res.json({ imageURL });
   } catch (error) {
     await fs.mkdir(path.join(process.cwd() + "/public", "/uploadedimages"));
@@ -45,7 +44,6 @@ const handler = async (req, res) => {
     if (!imageURL) {
       imageURL = "/uploadedimages/" + imagePath.files.myImage[0].newFilename;
     }
-    console.log("In image API CATCH BLOCK, imageURL: ", imageURL);
     res.json({ imageURL });
   }
 };

@@ -45,6 +45,8 @@ const LeftSideBar = () => {
     router.push("/");
   };
 
+  // console.log("LeftSideBar, userData: ", { userData });
+
   return (
     <div className={`${styles.mainContainer}`}>
       <div></div>
@@ -61,37 +63,37 @@ const LeftSideBar = () => {
             <GoHomeFill /> Home
           </button>
         </Link>
-        <Link href="/explore">
+        <Link href="#">
           <button>
             <IoSearchOutline /> Explore
           </button>
         </Link>
-        <Link href="/notifications">
+        <Link href="#">
           <button>
             <RiNotification2Line /> Notifications
           </button>
         </Link>
-        <Link href="/messages">
+        <Link href="#">
           <button>
             <FaRegEnvelope /> Messages
           </button>
         </Link>
-        <Link href="/lists">
+        <Link href="#">
           <button>
             <RiFileListLine /> Lists
           </button>
         </Link>
-        <Link href="/bookmarks">
+        <Link href="#">
           <button>
             <FaRegBookmark /> Bookmarks
           </button>
         </Link>
-        <Link href="/communities">
+        <Link href="#">
           <button>
             <BsPeople /> Communities
           </button>
         </Link>
-        <Link href="/premium">
+        <Link href="#">
           <button>
             <BsTwitterX /> Premium
           </button>
@@ -101,12 +103,12 @@ const LeftSideBar = () => {
             <IoPersonOutline /> Profile
           </button>
         </Link>
-        <Link href="/more">
+        <Link href="#">
           <button>
             <CiCircleMore /> More
           </button>
         </Link>
-        <Link href="/post">
+        <Link href="/home">
           <button className={`${styles.btnPost}`}>Post</button>
         </Link>
         {showLogout && (
@@ -118,7 +120,11 @@ const LeftSideBar = () => {
           className={`${styles.fixedBottomElement}`}
           onClick={() => setShowLogout(!showLogout)}
         >
-          <img src="/images/dp.jpg" alt="" className={`${styles.dp}`} />
+          <img
+            src={userData?.dpURL || "/images/dp_default.jpg"}
+            alt="Not found"
+            className={`${styles.dp}`}
+          />
           <div>
             <p className={styles.boldText}>{userData?.name}</p>
             <p className={styles.grayText}>@{userData?.username}</p>

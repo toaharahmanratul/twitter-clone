@@ -15,14 +15,14 @@ import Link from "next/link";
 import PostCard from "../posts/PostCard";
 import axios from "axios";
 
-const Newsfeed = ({ userEmail, SessionUsername, id }) => {
+const Newsfeed = ({ userEmail, SessionUsername, id, sessionDPURL }) => {
   const [userData, setUserData] = useState(null);
-  const [newsfeedData, setNewsfeedData] = useState(null);
+  const [newsfeedPosts, setNewsfeedPosts] = useState(null);
   const [postText, setPostText] = useState("");
   const [uploading, setUploading] = useState(false);
   const [selectedImage, setSelectedImage] = useState("");
   const [selectedFile, setSelectedFile] = useState("");
-  const [postSubmitted, setPostSubmitted] = useState(false);
+  const [postChanged, setPostChanged] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -35,28 +35,30 @@ const Newsfeed = ({ userEmail, SessionUsername, id }) => {
         console.error("Error fetching user data.");
       }
     };
-    const fetchNewsfeedData = async () => {
+    const fetchNewsfeedPosts = async () => {
       try {
         const response = await getNewsFeedPosts();
         if (response.status === 200) {
           console.log(response.data);
-          setNewsfeedData(response.data.posts);
+          setNewsfeedPosts(response.data.posts);
         }
       } catch (error) {
         console.error("Error fetching newsfeed posts.");
       }
     };
-    if (postSubmitted) {
+    if (postChanged) {
       fetchUserData();
-      setPostSubmitted(false);
+      setPostChanged(false);
       return;
     }
     fetchUserData();
-    fetchNewsfeedData();
-  }, [postSubmitted]);
+    fetchNewsfeedPosts();
+  }, [postChanged]);
+  console.log({ userData, newsfeedPosts });
 
-  console.log({ userData, newsfeedData });
-
+  const handlePostDeleteAndEdit = () => {
+    setPostChanged(true);
+  };
   const handlePostSubmit = async (e) => {
     e.preventDefault();
     var imageURL = null;
@@ -76,20 +78,18 @@ const Newsfeed = ({ userEmail, SessionUsername, id }) => {
     }
     try {
       const post = {
-        userEmail,
-        name: userData?.name,
         username: userData?.username,
-        isImageThere: false,
         postText: postText,
         imageURL: imageURL ? imageURL : "",
       };
-      await createNewPost({ post });
+      const res = await createNewPost({ post });
+      const data = res.data;
       setPostText("");
       setUploading(false);
       setSelectedImage("");
       setSelectedFile("");
       imageURL = null;
-      setPostSubmitted(true);
+      setPostChanged(true);
     } catch (error) {
       console.error("Error creating post:", error);
     }
@@ -107,10 +107,14 @@ const Newsfeed = ({ userEmail, SessionUsername, id }) => {
           </div>
 
           <div className={`${styles.createPostDiv}`}>
-            <img src="images/dp.jpg" alt="" className={`${styles.dp}`} />
+            <img
+              src={sessionDPURL || "/images/dp_default.jpg"}
+              alt=""
+              className={`${styles.dp}`}
+            />
             <form className={`${styles.postForm}`} onSubmit={handlePostSubmit}>
               <div>
-                <input
+                <textarea
                   type="text"
                   placeholder="What is happening?!"
                   onChange={(e) => setPostText(e.target.value)}
@@ -138,7 +142,7 @@ const Newsfeed = ({ userEmail, SessionUsername, id }) => {
                       onChange={({ target }) => {
                         if (target.files) {
                           const file = target.files[0];
-                          setSelectedImage(URL.createObjectURL(file));
+                          setSelectedImage(URL?.createObjectURL(file));
                           setSelectedFile(file);
                         }
                       }}
@@ -163,8 +167,13 @@ const Newsfeed = ({ userEmail, SessionUsername, id }) => {
             <div className={`${styles.mediaDiv}`}></div>
           </div>
 
-          {newsfeedData?.map((post) => (
-            <PostCard key={post._id} post={post} />
+          {newsfeedPosts?.map((post) => (
+            <PostCard
+              key={post._id}
+              post={post}
+              SessionUsername={SessionUsername}
+              onPostDeleteAndEdit={handlePostDeleteAndEdit}
+            />
           ))}
         </div>
 

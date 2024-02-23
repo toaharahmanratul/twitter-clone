@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from "react";
 import styles from "./styles/user-profile.module.css";
-import { createNewPost, getUser } from "@/lib/apiRoutes";
+import { createNewPost, getUser, getUserPosts } from "@/lib/apiRoutes";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaRegCalendarAlt } from "react-icons/fa";
-
 import Link from "next/link";
-import PostCard from "../posts/PostCard";
-import axios from "axios";
+
 import LeftSideBar from "../newsfeed/LeftSideBar";
 import RightSideBar from "../newsfeed/RightSideBar";
 import { useRouter } from "next/router";
-import { formatJoinDate } from "@/utils/formatDate";
 import EditProfileModal from "./EditProfileModal";
+import { formatJoinDate } from "@/utils/profile/formatDate";
+import PostCard from "../posts/PostCard";
 
 const UserProfile = ({
   userEmail,
@@ -19,10 +18,12 @@ const UserProfile = ({
   id,
   currentProfileUsername,
 }) => {
+  const router = useRouter();
   const [userData, setUserData] = useState(null);
+  const [userPosts, setUserPosts] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Posts");
-  const router = useRouter();
+  const [postChanged, setPostChanged] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -35,9 +36,28 @@ const UserProfile = ({
         console.error("Error fetching user data.");
       }
     };
-
+    const fetchUserPosts = async () => {
+      try {
+        const response = await getUserPosts(currentProfileUsername);
+        if (response.status === 200) {
+          setUserPosts(response.data.posts);
+        }
+      } catch (error) {
+        console.error("Error fetching user data.");
+      }
+    };
+    if (postChanged) {
+      fetchUserPosts();
+      setPostChanged(false);
+      return;
+    }
     fetchUserData();
-  }, [router]);
+    fetchUserPosts();
+  }, [router, postChanged]);
+
+  const handlePostDeleteAndEdit = () => {
+    setPostChanged(true);
+  };
 
   const openEditModal = () => {
     setIsEditModalOpen(true);
@@ -51,6 +71,12 @@ const UserProfile = ({
     setActiveTab(tab);
   };
 
+  if (!userData) {
+    return <div>User Not Found</div>;
+  }
+
+  console.log({ userData, userPosts });
+
   return (
     <div>
       <LeftSideBar className={`${styles.leftSideBar}`} />
@@ -63,19 +89,19 @@ const UserProfile = ({
             </Link>
             <div>
               <h3>{userData?.name}</h3>
-              <p>{`${userData?.posts.length} ${
-                userData?.posts.length > 1 ? "posts" : "post"
+              <p>{`${userPosts?.length} ${
+                userPosts?.length > 1 ? "posts" : "post"
               }`}</p>
             </div>
           </div>
 
           <div className={`${styles.dpCoverDiv}`}>
             <div className={`${styles.coverPhotoDiv}`}>
-              <img src="/images/atif.jpg" alt="" />
+              <img src={userData?.coverURL || ""} alt="" />
             </div>
             <div className={`${styles.profileDPDiv}`}>
               <img
-                src="/images/dp.jpg"
+                src={userData?.dpURL || "/images/dp_default.jpg"}
                 alt={`${userData?.name}'s Profile`}
                 className={`${styles.profileDP}`}
               />
@@ -92,6 +118,7 @@ const UserProfile = ({
                 <EditProfileModal
                   isOpen={isEditModalOpen}
                   onClose={closeEditModal}
+                  userData={userData}
                 />
 
                 {SessionUsername !== currentProfileUsername && (
@@ -170,17 +197,35 @@ const UserProfile = ({
           </div>
 
           {activeTab === "Posts" && (
-            <div>
-              {userData?.posts.map((post) => (
-                <PostCard key={post._id} post={post} />
-              ))}
+            <div className={`${styles.tabContentDiv}`}>
+              {userPosts?.map((post) => {
+                return (
+                  <PostCard
+                    key={post._id}
+                    post={{
+                      ...post,
+                      name: userData?.name,
+                      dpURL: userData?.dpURL,
+                    }}
+                    SessionUsername={SessionUsername}
+                    onPostDeleteAndEdit={handlePostDeleteAndEdit}
+                  />
+                );
+              })}
             </div>
           )}
-
-          {/* Placeholder for other tabs */}
-          {activeTab !== "Posts" && (
-            <div>No content available for {activeTab}</div>
+          {activeTab === "Media" && (
+            <div className={`${styles.mediaContentDiv}`}>
+              {userPosts?.map((post) => {
+                if (post.imageURL) {
+                  return (
+                    <img src={post.imageURL} className={`${styles.mediaImg}`} />
+                  );
+                }
+              })}
+            </div>
           )}
+          
         </div>
 
         <RightSideBar className={`${styles.rightSideBar}`} />
